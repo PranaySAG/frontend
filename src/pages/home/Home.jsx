@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Home.css';
-import delImg from '../../../public/delete.png';
+import delImg from '../../assets/delete.png';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [todos, setTodos] = useState([]);
   const navigate = useNavigate();
+  const [warning, setWarning] = useState(true);
 
   const handleSubmit = () => {
     navigate('/create');
   }
   const fetchTodos = async () => {
-      const response = await axios.get('http://localhost:3000/todos');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}todos`);
       setTodos(response.data.data);
   };
 
@@ -21,7 +22,7 @@ const Home = () => {
   }, []);
 
     const deleteTodo = async (id) => {
-    const response = await axios.delete(`http://localhost:3000/todos/${id}`);       
+    const response = await axios.delete(`${import.meta.env.VITE_API_URL}todos/${id}`);
     if (response) {
       alert(response.data.message);
       fetchTodos();
@@ -29,6 +30,14 @@ const Home = () => {
     };
 
   return (
+  <div className='main-container'>
+      {warning && (
+        <div className="warning">
+          <p>Hosted on Render (free tier). May take a few seconds to wake up.</p>
+          <span className="close" onClick={() => setWarning(false)}>❌</span>
+        </div>
+      )}
+  
     <div className='container'>
       <h1 className='title'>Todo List</h1>
         {todos.map((todo) => {
@@ -48,6 +57,7 @@ const Home = () => {
                 <button className='del-btn' onClick={() => deleteTodo(id)}> <img src={delImg} alt="Delete"/></button> 
               </div>
               </div>
+
             </div>
           );
         })}
@@ -55,6 +65,7 @@ const Home = () => {
           <button onClick={handleSubmit} className="btn">Add Todo</button>
         </div>
     </div>
+  </div>
   );
 };
 

@@ -15,7 +15,7 @@ const CreateTodo = () => {
   const navigate = useNavigate();
     const addTodo = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://localhost:3000/todos', todoData);
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}todos`, todoData);
 
       if (response) {
         alert(response.data.message);

@@ -1,3 +1,9 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .container {
   width: 900px;
@@ -8,19 +14,36 @@
   background-color: antiquewhite;
 }
 
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: #dadada;
+  color: gray;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 5px
+}
+
+.close {
+  cursor: pointer;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
 
-.todo-item { 
+.todo-item {
   list-style: none;
   background-color: #dfbdbd;
   padding: 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0,
-  0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   display: flex-start;
   justify-content: center;
@@ -42,7 +65,6 @@ h1 {
   margin-top: 20px;
 }
 
-
 .btn {
   padding: 10px 10px;
   background-color: #28a745;
@@ -52,7 +74,7 @@ h1 {
   font-size: 16px;
   cursor: pointer;
 }
- 
+
 .btn:hover {
   background-color: #218838;
 }
@@ -86,8 +108,7 @@ img {
 
   display: flex;
 
-
-  gap: 15px;  
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
 }
